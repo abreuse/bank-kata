@@ -1,6 +1,6 @@
 package fr.alexis.breuse.account;
 
-import fr.alexis.breuse.exception.NegativeDepositAmountException;
+import fr.alexis.breuse.exception.NegativeAmountException;
 import fr.alexis.breuse.exception.NotEnoughFundsException;
 import fr.alexis.breuse.operation.Operation;
 import fr.alexis.breuse.operation.OperationFactory;
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Account {
+
     private double balance;
 
     private List<Operation> operations;
@@ -27,9 +28,9 @@ public class Account {
         return operations;
     }
 
-    public Account deposit(double amount) throws NegativeDepositAmountException {
+    public Account deposit(double amount) throws NegativeAmountException {
         if(amount < 0)
-            throw new NegativeDepositAmountException();
+            throw new NegativeAmountException();
 
         this.balance += amount;
         operations.add(OperationFactory.createOperation(OperationType.DEPOSIT, this.balance, amount));
@@ -37,7 +38,10 @@ public class Account {
         return this;
     }
 
-    public Account withdraw(double amount) throws NotEnoughFundsException {
+    public Account withdraw(double amount) throws NotEnoughFundsException, NegativeAmountException {
+        if(amount < 0)
+            throw new NegativeAmountException();
+
         if(amount > balance)
             throw new NotEnoughFundsException("The amount [" + amount + "]"
                     + " to withdraw is greater than the current balance [" + balance + "].");

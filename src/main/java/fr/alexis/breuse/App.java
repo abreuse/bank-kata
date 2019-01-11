@@ -1,7 +1,7 @@
 package fr.alexis.breuse;
 
 import fr.alexis.breuse.account.Account;
-import fr.alexis.breuse.exception.NegativeDepositAmountException;
+import fr.alexis.breuse.exception.NegativeAmountException;
 import fr.alexis.breuse.exception.NotEnoughFundsException;
 
 /**
@@ -10,7 +10,7 @@ import fr.alexis.breuse.exception.NotEnoughFundsException;
  */
 public class App 
 {
-    public static void main( String[] args ) throws NegativeDepositAmountException, NotEnoughFundsException {
+    public static void main( String[] args ) throws NegativeAmountException, NotEnoughFundsException {
         Account account = new Account(100);
         account.deposit(100)
                 .withdraw(50)
