@@ -1,13 +1,17 @@
 package fr.alexis.breuse;
 
 public class Account {
-    public Account(int i) {
+    private double balance;
+
+    public Account(double balance) {
+        this.balance = balance;
     }
 
-    public void deposit(int i) {
+    public void deposit(double depositAmount) {
+        this.balance += depositAmount;
     }
 
-    public int getBalance() {
-        return 0;
+    public double getBalance() {
+        return balance;
     }
 }
