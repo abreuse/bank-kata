@@ -31,6 +31,7 @@ public class Account {
                     + " to withdraw is greater than the current balance [" + balance + "].");
 
         this.balance -= amount;
+        operations.add(OperationFactory.createOperation(OperationType.WITHDRAW, this.balance, amount));
     }
 
     public List<Operation> getOperations() {
