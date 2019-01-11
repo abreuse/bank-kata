@@ -13,15 +13,16 @@ public class Account {
         operations = new ArrayList<Operation>();
     }
 
+    public double getBalance() {
+        return balance;
+    }
+
     public void deposit(double amount) throws NegativeDepositAmountException {
         if(amount < 0)
             throw new NegativeDepositAmountException();
 
         this.balance += amount;
-    }
-
-    public double getBalance() {
-        return balance;
+        operations.add(OperationFactory.createOperation(OperationType.DEPOSIT, this.balance, amount));
     }
 
     public void withdraw(double amount) throws NotEnoughFundsException {
