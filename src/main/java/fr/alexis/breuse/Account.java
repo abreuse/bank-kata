@@ -18,7 +18,10 @@ public class Account {
         return balance;
     }
 
-    public void withdraw(double amount) {
+    public void withdraw(double amount) throws NotEnoughFundsException {
+        if(amount > balance)
+            throw new NotEnoughFundsException();
+
         this.balance -= amount;
     }
 }
