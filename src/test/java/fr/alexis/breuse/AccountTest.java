@@ -42,4 +42,9 @@ public class AccountTest {
         account.withdraw(10.45);
         assertEquals(89.55, account.getBalance(), 0);
     }
+
+    @Test(expected = NotEnoughFundsException.class)
+    public void should_throw_exception_when_withdraw_more_than_balance() {
+        account.withdraw(150);
+    }
 }
