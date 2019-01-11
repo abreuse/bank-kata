@@ -19,4 +19,10 @@ public class AccountTest {
         account.deposit(100);
         assertEquals(100, account.getBalance(), 0);
     }
+
+    @Test
+    public void should_deposit_10_45() {
+        account.deposit(10.45);
+        assertEquals(10.45, account.getBalance(), 0);
+    }
 }
