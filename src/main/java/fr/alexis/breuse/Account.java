@@ -17,6 +17,10 @@ public class Account {
         return balance;
     }
 
+    public List<Operation> getOperations() {
+        return operations;
+    }
+
     public void deposit(double amount) throws NegativeDepositAmountException {
         if(amount < 0)
             throw new NegativeDepositAmountException();
@@ -34,7 +38,10 @@ public class Account {
         operations.add(OperationFactory.createOperation(OperationType.WITHDRAW, this.balance, amount));
     }
 
-    public List<Operation> getOperations() {
-        return operations;
+    public void printOperations() {
+        System.out.println("DATE\t\t|\tTYPE\t|\tAMOUNT\t|\tBALANCE");
+        for (Operation operation : operations) {
+            System.out.println(operation);
+        }
     }
 }

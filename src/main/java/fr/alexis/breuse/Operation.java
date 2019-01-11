@@ -3,6 +3,7 @@ package fr.alexis.breuse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -16,4 +17,17 @@ public class Operation {
 
     private double amount;
 
+    @Override
+    public String toString() {
+        StringBuilder operation = new StringBuilder();
+        return operation.append(new SimpleDateFormat("yyyy-MM-dd").format(date))
+                .append("\t|\t")
+                .append(type)
+                .append("\t|\t")
+                .append(amount)
+                .append("\t|\t")
+                .append(balance)
+                .append("\t|\t")
+                .toString();
+    }
 }
