@@ -1,8 +1,19 @@
 package fr.alexis.breuse;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 import java.util.Date;
 
+@AllArgsConstructor
+@Getter
 public class Operation {
-    public Operation(Date date, OperationType type, double balance, double amount) {
-    }
+    private Date date;
+
+    private OperationType type;
+
+    private double balance;
+
+    private double amount;
+
 }

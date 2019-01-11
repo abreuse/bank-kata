@@ -19,6 +19,7 @@ public class OperationTest {
         account.getOperations().add(OperationFactory.createOperation(OperationType.DEPOSIT, account.getBalance(), 50));
 
         assertEquals(1, account.getOperations().size());
+        assertEquals(OperationType.DEPOSIT, account.getOperations().get(0).getType());
     }
 
     @Test
@@ -26,5 +27,6 @@ public class OperationTest {
         account.getOperations().add(OperationFactory.createOperation(OperationType.WITHDRAW, account.getBalance(), 50));
 
         assertEquals(1, account.getOperations().size());
+        assertEquals(OperationType.WITHDRAW, account.getOperations().get(0).getType());
     }
 }
