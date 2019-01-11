@@ -7,7 +7,10 @@ public class Account {
         this.balance = balance;
     }
 
-    public void deposit(double depositAmount) {
+    public void deposit(double depositAmount) throws NegativeDepositAmountException {
+        if(depositAmount < 0)
+            throw new NegativeDepositAmountException();
+
         this.balance += depositAmount;
     }
 
