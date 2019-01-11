@@ -1,5 +1,8 @@
 package fr.alexis.breuse;
 
+import fr.alexis.breuse.account.Account;
+import fr.alexis.breuse.exception.NegativeDepositAmountException;
+import fr.alexis.breuse.exception.NotEnoughFundsException;
 import org.junit.Before;
 import org.junit.Test;
 

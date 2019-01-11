@@ -1,4 +1,10 @@
-package fr.alexis.breuse;
+package fr.alexis.breuse.account;
+
+import fr.alexis.breuse.exception.NegativeDepositAmountException;
+import fr.alexis.breuse.exception.NotEnoughFundsException;
+import fr.alexis.breuse.operation.Operation;
+import fr.alexis.breuse.operation.OperationFactory;
+import fr.alexis.breuse.operation.OperationType;
 
 import java.util.ArrayList;
 import java.util.List;

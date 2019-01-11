@@ -1,5 +1,9 @@
 package fr.alexis.breuse;
 
+import fr.alexis.breuse.account.Account;
+import fr.alexis.breuse.exception.NegativeDepositAmountException;
+import fr.alexis.breuse.exception.NotEnoughFundsException;
+
 /**
  * Hello world!
  *

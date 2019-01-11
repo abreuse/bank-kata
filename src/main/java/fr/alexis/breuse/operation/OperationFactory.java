@@ -1,4 +1,4 @@
-package fr.alexis.breuse;
+package fr.alexis.breuse.operation;
 
 import java.util.Date;
 

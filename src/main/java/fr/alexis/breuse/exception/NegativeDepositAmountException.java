@@ -1,4 +1,4 @@
-package fr.alexis.breuse;
+package fr.alexis.breuse.exception;
 
 public class NegativeDepositAmountException extends Throwable {
     public NegativeDepositAmountException() {

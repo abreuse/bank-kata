@@ -1,5 +1,8 @@
 package fr.alexis.breuse;
 
+import fr.alexis.breuse.account.Account;
+import fr.alexis.breuse.operation.OperationFactory;
+import fr.alexis.breuse.operation.OperationType;
 import org.junit.Before;
 import org.junit.Test;
 
