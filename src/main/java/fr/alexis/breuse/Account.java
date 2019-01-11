@@ -20,7 +20,8 @@ public class Account {
 
     public void withdraw(double amount) throws NotEnoughFundsException {
         if(amount > balance)
-            throw new NotEnoughFundsException();
+            throw new NotEnoughFundsException("The amount [" + amount + "]"
+                    + " to withdraw is greater than the current balance [" + balance + "].");
 
         this.balance -= amount;
     }
