@@ -36,4 +36,10 @@ public class AccountTest {
         account.withdraw(100);
         assertEquals(0, account.getBalance(), 0);
     }
+
+    @Test
+    public void should_withdraw_10_45() {
+        account.withdraw(10.45);
+        assertEquals(89.55, account.getBalance(), 0);
+    }
 }
