@@ -8,8 +8,10 @@ public class App
 {
     public static void main( String[] args ) throws NegativeDepositAmountException, NotEnoughFundsException {
         Account account = new Account(100);
-        account.deposit(100);
-        account.withdraw(50);
-        account.printOperations();
+        account.deposit(100)
+                .withdraw(50)
+                .deposit(25)
+                .withdraw(30)
+                .printOperations();
     }
 }

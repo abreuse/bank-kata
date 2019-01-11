@@ -21,21 +21,25 @@ public class Account {
         return operations;
     }
 
-    public void deposit(double amount) throws NegativeDepositAmountException {
+    public Account deposit(double amount) throws NegativeDepositAmountException {
         if(amount < 0)
             throw new NegativeDepositAmountException();
 
         this.balance += amount;
         operations.add(OperationFactory.createOperation(OperationType.DEPOSIT, this.balance, amount));
+
+        return this;
     }
 
-    public void withdraw(double amount) throws NotEnoughFundsException {
+    public Account withdraw(double amount) throws NotEnoughFundsException {
         if(amount > balance)
             throw new NotEnoughFundsException("The amount [" + amount + "]"
                     + " to withdraw is greater than the current balance [" + balance + "].");
 
         this.balance -= amount;
         operations.add(OperationFactory.createOperation(OperationType.WITHDRAW, this.balance, amount));
+
+        return this;
     }
 
     public void printOperations() {
