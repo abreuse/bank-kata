@@ -25,4 +25,9 @@ public class AccountTest {
         account.deposit(10.45);
         assertEquals(10.45, account.getBalance(), 0);
     }
+
+    @Test(expected = NegativeDepositAmountException.class)
+    public void should_throw_exception_when_deposit_negative_amount() {
+        account.deposit(-100);
+    }
 }
