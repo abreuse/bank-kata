@@ -1,10 +1,16 @@
 package fr.alexis.breuse;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Account {
     private double balance;
 
+    private List<Operation> operations;
+
     public Account(double balance) {
         this.balance = balance;
+        operations = new ArrayList<Operation>();
     }
 
     public void deposit(double amount) throws NegativeDepositAmountException {
@@ -24,5 +30,9 @@ public class Account {
                     + " to withdraw is greater than the current balance [" + balance + "].");
 
         this.balance -= amount;
+    }
+
+    public List<Operation> getOperations() {
+        return operations;
     }
 }
