@@ -8,6 +8,7 @@ import fr.alexis.breuse.operation.OperationType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Account {
 
@@ -15,22 +16,29 @@ public class Account {
 
     private List<Operation> operations;
 
+    private Predicate<Double> isNegativeValue = d -> d < 0;
+
+    private Predicate<Double> isGreaterThanBalance = d -> d > this.balance;
+
+
     public Account(double balance) {
         this.balance = balance;
         operations = new ArrayList<Operation>();
     }
 
+
     public double getBalance() {
         return balance;
     }
+
 
     public List<Operation> getOperations() {
         return operations;
     }
 
+
     public Account deposit(double amount) throws NegativeAmountException {
-        if(amount < 0)
-            throw new NegativeAmountException();
+        validateAmount(amount);
 
         this.balance += amount;
         operations.add(OperationFactory.createOperation(OperationType.DEPOSIT, this.balance, amount));
@@ -38,13 +46,10 @@ public class Account {
         return this;
     }
 
-    public Account withdraw(double amount) throws NotEnoughFundsException, NegativeAmountException {
-        if(amount < 0)
-            throw new NegativeAmountException();
 
-        if(amount > balance)
-            throw new NotEnoughFundsException("The amount [" + amount + "]"
-                    + " to withdraw is greater than the current balance [" + balance + "].");
+    public Account withdraw(double amount) throws NotEnoughFundsException, NegativeAmountException {
+        validateAmount(amount);
+        validateBalance(amount);
 
         this.balance -= amount;
         operations.add(OperationFactory.createOperation(OperationType.WITHDRAW, this.balance, amount));
@@ -52,10 +57,26 @@ public class Account {
         return this;
     }
 
+
+    private void validateAmount(double amount) throws NegativeAmountException {
+        if(isNegativeValue.test(amount))
+            throw new NegativeAmountException();
+    }
+
+
+    private void validateBalance(double amount) throws NotEnoughFundsException {
+        if(isGreaterThanBalance.test(amount))
+            throw new NotEnoughFundsException("The amount [" + amount + "]"
+                    + " to withdraw is greater than the current balance [" + balance + "].");
+    }
+
+
     public void printOperations() {
         System.out.println("DATE\t\t|\tTYPE\t|\tAMOUNT\t|\tBALANCE");
         for (Operation operation : operations) {
             System.out.println(operation);
         }
     }
+
+
 }
