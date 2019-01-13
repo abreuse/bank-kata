@@ -5,8 +5,6 @@ import fr.alexis.breuse.exception.NotEnoughFundsException;
 import fr.alexis.breuse.operation.Operation;
 import fr.alexis.breuse.operation.OperationFactory;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;

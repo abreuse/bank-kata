@@ -4,10 +4,6 @@ import fr.alexis.breuse.account.Account;
 import fr.alexis.breuse.exception.NegativeAmountException;
 import fr.alexis.breuse.exception.NotEnoughFundsException;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args ) throws NegativeAmountException, NotEnoughFundsException {
