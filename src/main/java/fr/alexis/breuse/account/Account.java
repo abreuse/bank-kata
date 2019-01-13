@@ -4,9 +4,10 @@ import fr.alexis.breuse.exception.NegativeAmountException;
 import fr.alexis.breuse.exception.NotEnoughFundsException;
 import fr.alexis.breuse.operation.Operation;
 import fr.alexis.breuse.operation.OperationFactory;
-import fr.alexis.breuse.operation.OperationType;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -14,7 +15,7 @@ public class Account {
 
     private double balance;
 
-    private List<Operation> operations;
+    private LinkedList<Operation> operations;
 
     private Predicate<Double> isNegativeValue = d -> d < 0;
 
@@ -23,7 +24,7 @@ public class Account {
 
     public Account(double balance) {
         this.balance = balance;
-        operations = new ArrayList<Operation>();
+        operations = new LinkedList<>();
     }
 
 
@@ -41,7 +42,7 @@ public class Account {
         validateAmount(amount);
 
         this.balance += amount;
-        operations.add(OperationFactory.createOperation(OperationType.DEPOSIT, this.balance, amount));
+        operations.addFirst(OperationFactory.createDepositOperation(this.balance, amount));
 
         return this;
     }
@@ -52,7 +53,7 @@ public class Account {
         validateBalance(amount);
 
         this.balance -= amount;
-        operations.add(OperationFactory.createOperation(OperationType.WITHDRAW, this.balance, amount));
+        operations.addFirst(OperationFactory.createWithdrawOperation(this.balance, amount));
 
         return this;
     }
@@ -73,9 +74,7 @@ public class Account {
 
     public void printOperations() {
         System.out.println("DATE\t\t|\tTYPE\t|\tAMOUNT\t|\tBALANCE");
-        for (Operation operation : operations) {
-            System.out.println(operation);
-        }
+        operations.forEach(System.out::println);
     }
 
 

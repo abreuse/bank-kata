@@ -19,7 +19,7 @@ public class OperationTest {
 
     @Test
     public void should_add_deposit_operation() {
-        account.getOperations().add(OperationFactory.createOperation(OperationType.DEPOSIT, account.getBalance(), 50));
+        account.getOperations().add(OperationFactory.createDepositOperation(account.getBalance(), 50));
 
         assertEquals(1, account.getOperations().size());
         assertEquals(OperationType.DEPOSIT, account.getOperations().get(0).getType());
@@ -27,7 +27,7 @@ public class OperationTest {
 
     @Test
     public void should_add_withdraw_operation() {
-        account.getOperations().add(OperationFactory.createOperation(OperationType.WITHDRAW, account.getBalance(), 50));
+        account.getOperations().add(OperationFactory.createWithdrawOperation(account.getBalance(), 50));
 
         assertEquals(1, account.getOperations().size());
         assertEquals(OperationType.WITHDRAW, account.getOperations().get(0).getType());
