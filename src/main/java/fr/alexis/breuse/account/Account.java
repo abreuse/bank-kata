@@ -36,7 +36,7 @@ public class Account {
     }
 
 
-    public Account deposit(double amount) throws NegativeAmountException {
+    public Account deposit(double amount) {
         validateAmount(amount);
 
         this.balance += amount;
@@ -46,7 +46,7 @@ public class Account {
     }
 
 
-    public Account withdraw(double amount) throws NotEnoughFundsException, NegativeAmountException {
+    public Account withdraw(double amount){
         validateAmount(amount);
         validateBalance(amount);
 
@@ -57,13 +57,13 @@ public class Account {
     }
 
 
-    private void validateAmount(double amount) throws NegativeAmountException {
+    private void validateAmount(double amount) {
         if(isNegativeValue.test(amount))
             throw new NegativeAmountException();
     }
 
 
-    private void validateBalance(double amount) throws NotEnoughFundsException {
+    private void validateBalance(double amount) {
         if(isGreaterThanBalance.test(amount))
             throw new NotEnoughFundsException("The amount [" + amount + "]"
                     + " to withdraw is greater than the current balance [" + balance + "].");
