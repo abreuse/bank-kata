@@ -15,10 +15,6 @@ public class Account {
 
     private LinkedList<Operation> operations;
 
-    private Predicate<Double> isNegativeValue = d -> d < 0;
-
-    private Predicate<Double> isGreaterThanBalance = d -> d > this.balance;
-
 
     public Account(double balance) {
         this.balance = balance;
@@ -58,13 +54,13 @@ public class Account {
 
 
     private void validateAmount(double amount) {
-        if(isNegativeValue.test(amount))
+        if(amount < 0)
             throw new NegativeAmountException();
     }
 
 
     private void validateBalance(double amount) {
-        if(isGreaterThanBalance.test(amount))
+        if(amount > balance)
             throw new NotEnoughFundsException("The amount [" + amount + "]"
                     + " to withdraw is greater than the current balance [" + balance + "].");
     }
